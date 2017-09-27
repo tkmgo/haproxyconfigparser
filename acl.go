@@ -2,6 +2,7 @@ package haproxyconfigparser
 
 import (
 	"fmt"
+	"strings"
 )
 
 func CreateUseBackendClauses(judge string, source []string) (*UseBackendClauses, error) {
@@ -48,6 +49,10 @@ func backendReferenceByAcl(frontend Frontend, backends []Backend) error {
 		for _, a := range ub.Condition.Any {
 			// TODO support or/and conditions
 			for _, s := range a {
+				//TODO Handle ! correctly instead of ignoring it
+				if strings.HasPrefix(s, "!") {
+					s=strings.TrimLeft(s,"!")
+				}
 				acl, err := findAclByName(s, &frontend)
 				if err != nil {
 					return err
