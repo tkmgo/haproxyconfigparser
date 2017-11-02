@@ -26,7 +26,7 @@ type UseBackendClauses struct {
 
 type UseBackend struct {
 	Name      string             `json:"name"`
-	Condition *UseBackendClauses `json:"cluses"`
+	Condition *UseBackendClauses `json:"clauses"`
 	Backend   *Backend           `json:"backend"`
 	Acls      []*Acl             `json:"acls"`
 }
