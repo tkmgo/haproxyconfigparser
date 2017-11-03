@@ -4,7 +4,6 @@ package haproxyconfigparser
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 )
 
