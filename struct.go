@@ -54,9 +54,12 @@ type Server struct {
 }
 
 type Backend struct {
-	Name    string     `json:"name"`
-	Options [][]string `json:"options"`
-	Servers []*Server  `json:"servers"`
+	Name        string     `json:"name"`
+	Mode        string     `json:"mode"`
+	Balance     string     `json:"balance"`
+	HttpRequest []string   `json:"http-request"`
+	Options     [][]string `json:"options"`
+	Servers     []*Server  `json:"servers"`
 }
 
 type Services struct {
