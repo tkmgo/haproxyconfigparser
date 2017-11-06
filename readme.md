@@ -1,5 +1,7 @@
 # haproxyconfigparser
 
+[![CircleCI](https://circleci.com/gh/IG-Group/haproxyconfigparser.svg?style=svg)](https://circleci.com/gh/IG-Group/haproxyconfigparser)
+
 HAProxcy config parser for Golang, but under development.
 
 
