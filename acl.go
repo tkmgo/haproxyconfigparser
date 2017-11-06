@@ -51,7 +51,7 @@ func backendReferenceByAcl(frontend Frontend, backends []Backend) error {
 			for _, s := range a {
 				//TODO Handle ! correctly instead of ignoring it
 				if strings.HasPrefix(s, "!") {
-					s=strings.TrimLeft(s,"!")
+					s = strings.TrimLeft(s, "!")
 				}
 				acl, err := findAclByName(s, &frontend)
 				if err != nil {
