@@ -230,6 +230,18 @@ func (self *BackendParser) Parse(node string, options []string, enable bool) err
 			s.Options = options[2:]
 		}
 		self.Backend.Servers = append(self.Backend.Servers, s)
+	case "mode":
+		if enable {
+			self.Backend.Mode = options[0]
+		}
+	case "balance":
+		if enable {
+			self.Backend.Balance = options[0]
+		}
+	case "http-request":
+		if enable {
+			self.Backend.HttpRequest = options
+		}
 	}
 	return nil
 }

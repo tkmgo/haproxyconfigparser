@@ -26,7 +26,7 @@ type UseBackendClauses struct {
 
 type UseBackend struct {
 	Name      string             `json:"name"`
-	Condition *UseBackendClauses `json:"cluses"`
+	Condition *UseBackendClauses `json:"clauses"`
 	Backend   *Backend           `json:"backend"`
 	Acls      []*Acl             `json:"acls"`
 }
@@ -54,9 +54,12 @@ type Server struct {
 }
 
 type Backend struct {
-	Name    string     `json:"name"`
-	Options [][]string `json:"options"`
-	Servers []*Server  `json:"servers"`
+	Name        string     `json:"name"`
+	Mode        string     `json:"mode"`
+	Balance     string     `json:"balance"`
+	HttpRequest []string   `json:"http-request"`
+	Options     [][]string `json:"options"`
+	Servers     []*Server  `json:"servers"`
 }
 
 type Services struct {
