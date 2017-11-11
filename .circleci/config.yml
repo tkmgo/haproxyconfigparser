@@ -25,7 +25,7 @@ jobs:
       - run: go get -u github.com/golang/dep/cmd/dep
       - run: dep ensure
       - run: go get -v -t -d ./...
-      - run: go test -v ./...
+      - run: go test -v ./... -bench .
       - run: go build -o haproxy-cfg2json cmd/haproxy-cfg2json/main.go
       - store_artifacts:
           path: haproxy-cfg2json
