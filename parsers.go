@@ -7,7 +7,6 @@ import (
 	"strconv"
 )
 
-
 type Parser interface {
 	Parse(node string, options []string, enable bool) error
 	Install(s *Services)
@@ -100,7 +99,6 @@ func (self *GlobalParser) Parse(node string, options []string, enable bool) erro
 	return nil
 }
 
-
 func (self *GlobalParser) Install(s *Services) {
 	s.Global = self.Global
 }
@@ -161,7 +159,6 @@ func (self *FrontendParser) Parse(node string, options []string, enable bool) er
 	return nil
 }
 
-
 func (self *FrontendParser) Install(s *Services) {
 	s.Frontends = append(s.Frontends, self.Frontend)
 }
@@ -179,7 +176,7 @@ type NilParser struct { // this parser does nothig
 }
 
 func NewNilParser(section string) *NilParser {
-	return &NilParser{section};
+	return &NilParser{section}
 }
 
 func (self *NilParser) Name() string {
