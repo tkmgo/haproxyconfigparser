@@ -2,7 +2,7 @@ package haproxyconfigparser
 
 type EventType string
 
-type EmitEvent func(EventType, string, Parser)
+type EmitEvent func(eventType EventType, line string, parser Parser)
 
 const (
 	EMPTY_LINE    EventType = "empty"
@@ -18,7 +18,12 @@ var (
 	numberOfEvents = 0
 )
 
-func RegisterEvent(group, name string, emitter EmitEvent) {
+// Registers an event listener to the event store.
+//
+// The group is any of "global", "backend", "frontend" or "*" where the asterisk means any.
+//
+// The name is the name is the first item on the line (i.e "bind", "acl", "use_backend" etc)
+func RegisterEvent(group string, name string, emitter EmitEvent) {
 	if _, ok := events[group]; !ok {
 		events[group] = map[string][]EmitEvent{}
 	}
@@ -26,7 +31,7 @@ func RegisterEvent(group, name string, emitter EmitEvent) {
 	numberOfEvents++
 }
 
-func emitEvent(group, name, line string, eventType EventType, parser Parser) {
+func emitEvent(group string, name, line string, eventType EventType, parser Parser) {
 	if numberOfEvents < 1 {
 		return
 	}

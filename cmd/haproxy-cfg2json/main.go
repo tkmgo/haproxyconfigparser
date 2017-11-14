@@ -8,6 +8,7 @@ import (
 	"os"
 )
 
+// Test implementation that reads a HAproxy config file and outputs it as JSON
 func main() {
 	if len(os.Args) != 2 {
 		log.Fatal("You need to specify the haproxy.cfg file.")
