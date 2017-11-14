@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/IG-Group/haproxyconfigparser"
+	"github.com/tkmgo/haproxyconfigparser"
 	"log"
 	"os"
 )
