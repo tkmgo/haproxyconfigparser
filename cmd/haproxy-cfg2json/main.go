@@ -3,9 +3,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/tkmgo/haproxyconfigparser"
 	"log"
 	"os"
+
+	"github.com/tkmgo/haproxyconfigparser"
 )
 
 // Test implementation that reads a HAproxy config file and outputs it as JSON
