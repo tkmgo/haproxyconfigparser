@@ -56,7 +56,6 @@ func Parse(config []string) (*Services, error) {
 	return services, nil
 }
 
-
 func maybeApply(s *Services, parser Parser) {
 	if parser != nil {
 		parser.Install(s)

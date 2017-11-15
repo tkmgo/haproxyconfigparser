@@ -3,11 +3,13 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/tkmgo/haproxyconfigparser"
 	"log"
 	"os"
+
+	"github.com/tkmgo/haproxyconfigparser"
 )
 
+// Test implementation that reads a HAproxy config file and outputs it as JSON
 func main() {
 	if len(os.Args) != 2 {
 		log.Fatal("You need to specify the haproxy.cfg file.")
