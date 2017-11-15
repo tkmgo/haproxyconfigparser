@@ -7,52 +7,10 @@ import (
 	"strconv"
 )
 
-func Parse(config []string) (*Services, error) {
-	services := NewServices()
-	var (
-		parser Parser
-		err    error
-	)
-	for _, line := range config {
-		items, enable := SeparateConfigLine(line)
-		if len(items) == 0 {
-			continue
-		}
-		switch items[0] {
-		case "global":
-			maybeApply(services, parser)
-			parser = NewGlobalParser()
-		case "frontend":
-			maybeApply(services, parser)
-			parser = NewFrontendParser(items[1])
-		case "backend":
-			maybeApply(services, parser)
-			parser = NewBackendParser(items[1])
-		case "defaults", "listen":
-			maybeApply(services, parser)
-			parser = nil
-		default:
-			if parser != nil {
-				if err = parser.Parse(items[0], items[1:], enable); err != nil {
-					return services, err
-				}
-			}
-		}
-	}
-	maybeApply(services, parser)
-
-	for _, f := range services.Frontends {
-		if err := backendReferenceByAcl(f, services.Backends); err != nil {
-			return services, err
-		}
-	}
-
-	return services, nil
-}
-
 type Parser interface {
 	Parse(node string, options []string, enable bool) error
 	Install(s *Services)
+	Name() string
 }
 
 /*
@@ -101,6 +59,10 @@ type GlobalParser struct {
 	Global Global
 }
 
+func (self *GlobalParser) Name() string {
+	return "global"
+}
+
 func (self *GlobalParser) Parse(node string, options []string, enable bool) error {
 	if !enable {
 		return nil
@@ -147,6 +109,10 @@ func NewGlobalParser() *GlobalParser {
 
 type FrontendParser struct {
 	Frontend Frontend
+}
+
+func (self *FrontendParser) Name() string {
+	return "frontend"
 }
 
 func (self *FrontendParser) Parse(node string, options []string, enable bool) error {
@@ -205,8 +171,30 @@ func NewFrontendParser(name string) *FrontendParser {
 	}
 }
 
+type NilParser struct { // this parser does nothig
+	Section string
+}
+
+func NewNilParser(section string) *NilParser {
+	return &NilParser{section}
+}
+
+func (self *NilParser) Name() string {
+	return self.Section
+}
+
+func (self *NilParser) Parse(node string, options []string, enable bool) error {
+	return nil
+}
+
+func (self *NilParser) Install(s *Services) {}
+
 type BackendParser struct {
 	Backend Backend
+}
+
+func (self *BackendParser) Name() string {
+	return "backend"
 }
 
 func (self *BackendParser) Parse(node string, options []string, enable bool) error {
@@ -255,11 +243,5 @@ func NewBackendParser(name string) *BackendParser {
 		Backend: Backend{
 			Name: name,
 		},
-	}
-}
-
-func maybeApply(s *Services, parser Parser) {
-	if parser != nil {
-		parser.Install(s)
 	}
 }
