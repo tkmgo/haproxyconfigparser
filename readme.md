@@ -24,7 +24,7 @@ import (
 )
 
 func main() {
-  config, _ := haproxyconfigparser.ParseFromStdin()
+	config, _ := haproxyconfigparser.ParseFromStdin()
 	fmt.Println(config)
 }
 ```
