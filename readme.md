@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/tkmgo/haproxyconfigparser.svg?style=svg)](https://circleci.com/gh/tkmgo/haproxyconfigparser)
 [![Go Report Card](https://goreportcard.com/badge/github.com/tkmgo/haproxyconfigparser)](https://goreportcard.com/report/github.com/tkmgo/haproxyconfigparser)
 
-HAProxcy config parser for Golang, but under development.
+HAProxy config parser for Golang, but under development.
 
 
 ## Behavior
