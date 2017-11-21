@@ -42,7 +42,7 @@ func ExampleRegisterEvent() {
 
 	_, err := ParseFromFile("testdata/haproxy.cfg")
 	if err != nil {
-		fmt.Errorf("Failed to parse data: %s", err)
+		fmt.Printf("Failed to parse data: %s", err)
 	}
 	//Output:
 	//EventType=start_section, line=backend profileEditingService_20000
