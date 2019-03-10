@@ -2,32 +2,52 @@
 
 
 [[projects]]
+  digest = "1:0deddd908b6b4b768cfc272c16ee61e7088a60f7fe2f06c547bd3d8e1f8b8e77"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
-  revision = "346938d642f2ec3594ed81d874461961cd0faa76"
-  version = "v1.1.0"
+  pruneopts = ""
+  revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
+  version = "v1.1.1"
 
 [[projects]]
   branch = "master"
+  digest = "1:387d79bfe8a4f0f300a22d65782108a94861eecfe652ffff30e8f91857ad81bb"
   name = "github.com/mitchellh/hashstructure"
   packages = ["."]
-  revision = "2bca23e0e452137f789efbc8610126fd8b94f73b"
+  pruneopts = ""
+  revision = "a38c50148365edc8df43c1580c48fb2b3a1e9cd7"
 
 [[projects]]
+  digest = "1:256484dbbcd271f9ecebc6795b2df8cad4c458dd0f5fd82a8c2fa0c29f233411"
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
+  pruneopts = ""
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:381bcbeb112a51493d9d998bbba207a529c73dbb49b3fd789e48c63fac1f192c"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
-  revision = "69483b4bd14f5845b5a1e55bca19e954e827f1d0"
-  version = "v1.1.4"
+  pruneopts = ""
+  revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
+  version = "v1.3.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:db06d06d5a6c8fa788b029a68dc224392c730a9cfb0a161a4cb216df9bd65bf1"
+  name = "github.com/tkmgo/haproxyconfigparser"
+  packages = ["."]
+  pruneopts = ""
+  revision = "6cf4571fe08a5b3332565b71baf874d244fe9165"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "e7f6282bade9e5552b2a58ec80ae903626a183e02b4262aef5e1f0086b550d23"
+  input-imports = [
+    "github.com/mitchellh/hashstructure",
+    "github.com/stretchr/testify/assert",
+    "github.com/tkmgo/haproxyconfigparser",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
